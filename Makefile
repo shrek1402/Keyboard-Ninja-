@@ -1,2 +1,2 @@
 all:
-	g++ pdcurses.dll Main.cpp -o Keyboard-Ninja!.exe
+	g++ pdcurses.dll Main.cpp kmenu.cpp -o Keyboard-Ninja!.exe
