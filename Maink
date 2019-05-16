@@ -1,7 +1,14 @@
 #include "kmenu.h"
 #include "stdfix.h"
+#include <ctime>
 
 #define PDC_DLL_BUILD
+void mainMenu(int row, int col);
+int printRamka(int _row, int _col);
+char slozhnost(int row, int col);
+void speedMode(char slozh, int row, int col);
+
+
 int printWelcomePanel(string _str, int row, int col)
 {
     ifstream myTextFile;
@@ -29,7 +36,11 @@ int main(int argc, char** argv)
         noecho();
         ch = getch();
         switch (ch) {
-        case '1':
+        case '1':{
+			char temp = slozhnost(row, col);
+			speedMode(temp, row, col);
+			break;
+		}
         case '2':
         case '3':
         case '4':
