@@ -25,8 +25,6 @@ int printWelcomePanel(string _str, int row, int col)
 int main(int argc, char** argv)
 {
     int row, col;
-    //char ch;
-
     initscr();
     getmaxyx(stdscr, row, col);
     printRamka(row, col);

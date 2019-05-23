@@ -4,7 +4,6 @@ TEST =
 .PHONY: clean
 
 all: help
-	
 
 build: folder1 folder2 bin/Keyboard-Ninja.exe copyDLL copyTXT
 
@@ -40,7 +39,4 @@ help:
 	@echo "3. If you see error 'pdcurses.dll not found': Make copyDLL"
 	@echo ""
 	@echo "=========================    TODO   ========================="
-=======
-all:
-	g++ pdcurses.dll Main.cpp kmenu.cpp -o Keyboard-Ninja!.exe
 

@@ -231,31 +231,78 @@ void speedMode(int slozh, int row, int col)
 			unsigned int startTime = clock();
 			unsigned int endTime = startTime;
 			
+			nodelay(stdscr, TRUE);
+			int ch;
+			int temp;
+			bool flag = 1;
+			int x,y;
+			char tempA;
 			do{
-				move(rand() % (row-4) + 3,
-					 rand() % (col - 2) + 1);
-				char tempA = rand() % 26 + 0x61;
-				addch(tempA);
-				if (getch() == tempA && endTime <= startTime + 10 * 1000)
-					result++;
-				erase();
-				printRamka(row, col);
-				move(1,1);
-				printw("%d", result);
-				endTime = clock();
-				move(1,5);
-				printw("%d ms", endTime - startTime);
 				
-			}while(endTime < startTime + 10 * 1000);
-			WINDOW *win = newwin(9, 60, (row-9)/2, (col-60)/2);
+				if ((ch = getch()) == ERR){
+					if (flag){
+						tempA = rand() % 26 + 0x61;
+						x = (rand() % (col-1)+1) ;
+						y = (rand() % (row-5)) + 4;
+						erase();
+						printRamka(row, col);
+						move(y,x);
+						printw("%c",tempA);
+						flag = 0;
+					}
+					
+					endTime = clock();
+					move(1,5);
+					printw("%d ms", endTime - startTime);
+					move(1,1);
+					printw("%d", result);
+				}
 				
-				move((row-9)/2 + 4, (col-60)/2 + 25);
+				else{
+					temp = ch;
+					flag = 0;
+					
+					if ((int)tempA != temp){
+							flag = 1;
+					}
+					else{
+							flag =1;
+							result++;
+					}
+						refresh();						
+					}
+			}while(endTime < startTime + SEC * 1000);
+			nodelay(stdscr, FALSE);
+			
+			erase();
+			printRamka(row, col);
+			//int col_t = 0, row_t = 0;
+			int ySize = 9,
+				xSize = col -(row - ySize +3 +2),
+				yy = (row - ySize - 5) / 2 + 4,
+				xx = (col - xSize) / 2;
+				if ((col - xSize)%2 != 0)
+					xSize++;
+				if ((row - ySize)%2 == 0)
+					ySize++;
+				
+		//	if ((col - (col - 1 - (row-9+4)))%2 != 0)
+			//	col_t = 1; 
+			//if (row%2 != 0)
+				//row_t = 1;
+			//WINDOW *win = newwin(9 - row_t, col - 1 - (row-9+4)+ col_t, (row-9+4)/2, (row - 9 +5)/2);// TODO сделать переменные ширины и тд.
+				WINDOW *win = newwin(ySize, xSize, yy, xx);
+				move(yy + 2, xx+xSize/2);
 				printw("Result: %d", result);
-				move((row-9)/2 + 5, (col-60)/2 + 25);
-				printw("MOLODEC!");
+				move(yy + 3, xx+xSize/2);
+				// TODO add: time, % ...
+				result > 0? 
+					printw("MOLODEC! :)"):
+					printw("NE MOLODEC! :(");
 				box(win,0,0);
 				wrefresh(win);
 				getch();
+			
 			break;
 		}
         
