@@ -7,7 +7,8 @@ int mainMenu(int row, int col);
 int printRamka(int _row, int _col);
 int slozhnost(int row, int col);
 void speedMode(int slozh, int row, int col);
-
+int lewel (int row, int col);
+void lewel_select(int slozh, int row, int col);
 
 int printWelcomePanel(string _str, int row, int col)
 {
@@ -38,6 +39,10 @@ int main(int argc, char** argv)
 			break;
 		}
         case 2:
+        	{
+        	int tmp = lewel (row, col);	
+        	lewel_select(tmp, row, col);
+			}
         case 3:
         case 4:
             return 0;

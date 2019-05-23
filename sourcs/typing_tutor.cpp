@@ -25,3 +25,28 @@ int lewel (int row, int col)
 	return printMenu(mStr);
 }
 
+void lewel_select(int slozh, int row, int col)
+{
+	erase();
+    printRamka(row, col);
+	
+	switch (slozh) {
+        case 1:
+		{
+			
+			break;
+		}
+        
+		case 2:{
+			
+			break;
+		}
+			
+		case 3:{
+				
+				break;
+		}
+		case 4:
+			break;
+    }	
+}

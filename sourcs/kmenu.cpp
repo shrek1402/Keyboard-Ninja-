@@ -5,7 +5,7 @@
 #include <string>
 using namespace std;
 constexpr auto _VERSION = "Beta v1.0";
-constexpr unsigned int _SEC = 1;
+constexpr unsigned int _SEC = 10;
 
 long long unsigned int printMenu(std::vector <std::string>& _vec)
 {
@@ -51,7 +51,7 @@ int mainMenu(int row, int col)
 	std::vector <std::string> mStr = {
 		"    Menu",
 		"1. Speed mode",
-		"2. Time mode",
+		"2. typing tutor",
 		"3. Blind seal mode",
 		"4. Exit"
 	};
