@@ -14,7 +14,7 @@ int printWelcomePanel(string _str, int row, int col)
     ifstream myTextFile;
     myTextFile.open(_str);
     if (!myTextFile.is_open())
-        return 1;
+        return 1; 
     move(row / 2, col / 2);
     printw("Hello");
 	refresh();
